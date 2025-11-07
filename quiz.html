@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Formativ baholash - EvalEd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            background-color: #f3f4f6;
+        }
+        .quiz-option.selected {
+            background-color: #e0e7ff;
+            border-color: #6366f1;
+        }
+        .quiz-option.correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">EvalEd</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-gray-600 hover:text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-gray-600 hover:text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="admin-login.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                    <i class="fas fa-user mr-2"></i>Admin kirish
+                </a>
+                <button class="md:hidden text-gray-600" id="mobileMenuButton">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-4 px-4 shadow-md" id="mobileMenu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-gray-600 hover:text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-gray-600 hover:text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quiz Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex mb-6" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="index.html" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600">
+                            <i class="fas fa-home mr-2"></i>
+                            Bosh sahifa
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <a href="lessons.html" class="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2">Darslar</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <a href="lesson-detail.html?id=1" class="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2">Formativ Baholash</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Test</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Quiz Header -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Formativ Baholash Testi</h1>
+                        <p class="text-gray-600">Formativ baholash mavzusi bo'yicha bilimingizni sinab ko'ring</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex items-center space-x-4">
+                        <div class="text-right">
+                            <div class="text-sm text-gray-500">Savol</div>
+                            <div class="text-lg font-bold text-indigo-600">1/5</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm text-gray-500">Vaqt</div>
+                            <div class="text-lg font-bold text-gray-800" id="timer">09:59</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 20%" id="quizProgress"></div>
+                </div>
+                <div class="flex justify-between text-sm text-gray-500">
+                    <span>Progress</span>
+                    <span>20%</span>
+                </div>
+            </div>
+
+            <!-- Quiz Question -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">1. Formativ baholashning asosiy maqsadi nima?</h2>
+                    <p class="text-gray-600 mb-2">Quyidagi variantlardan to'g'ri javobni tanlang:</p>
+                </div>
+
+                <div class="space-y-3 mb-6" id="quizOptions">
+                    <div class="quiz-option border border-gray-200 rounded-lg p-4 cursor-pointer" data-option="A">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 border-2 border-gray-300 rounded-full flex items-center justify-center mr-3 option-circle">
+                                <span class="text-gray-700 font-medium">A</span>
+                            </div>
+                            <span class="text-gray-700">O'quvchilarni reytingga solish va saralash</span>
+                        </div>
+                    </div>
+
+                    <div class="quiz-option border border-gray-200 rounded-lg p-4 cursor-pointer" data-option="B">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 border-2 border-gray-300 rounded-full flex items-center justify-center mr-3 option-circle">
+                                <span class="text-gray-700 font-medium">B</span>
+                            </div>
+                            <span class="text-gray-700">O'qituvchiga maosh berish uchun asos yaratish</span>
+                        </div>
+                    </div>
+
+                    <div class="quiz-option border border-gray-200 rounded-lg p-4 cursor-pointer" data-option="C">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 border-2 border-gray-300 rounded-full flex items-center justify-center mr-3 option-circle">
+                                <span class="text-gray-700 font-medium">C</span>
+                            </div>
+                            <span class="text-gray-700">O'quv jarayonini yaxshilash va o'quvchilarning o'rganishiga yordam berish</span>
+                        </div>
+                    </div>
+
+                    <div class="quiz-option border border-gray-200 rounded-lg p-4 cursor-pointer" data-option="D">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 border-2 border-gray-300 rounded-full flex items-center justify-center mr-3 option-circle">
+                                <span class="text-gray-700 font-medium">D</span>
+                            </div>
+                            <span class="text-gray-700">Maktab obro'sini oshirish va tashqi ko'rinishni yaxshilash</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explanation (initially hidden) -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 hidden" id="explanation">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-lightbulb text-blue-400 mt-1"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-blue-800">Tushuntirish</h3>
+                            <div class="mt-1 text-sm text-blue-700">
+                                <p>Formativ baholashning asosiy maqsadi - o'quv jarayonini yaxshilash va o'quvchilarning o'rganishiga yordam berish. Bu jarayonda o'quvchilarning bilim darajasi, tushunish darajasi va qobiliyatlarini aniqlash, shuningdek, o'qitish va o'rganishni yaxshilash maqsadida ma'lumot to'plash, talqin qilish va ulardan foydalanish amalga oshiriladi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between">
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition flex items-center" id="prevButton" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Oldingi savol
+                    </button>
+                    <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center" id="nextButton">
+                        Keyingi savol <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Navigation -->
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Test Navigatsiyasi</h3>
+                <div class="grid grid-cols-5 gap-2">
+                    <div class="bg-indigo-600 text-white text-center py-2 rounded-lg font-medium">1</div>
+                    <div class="bg-gray-200 text-gray-700 text-center py-2 rounded-lg font-medium hover:bg-gray-300 cursor-pointer">2</div>
+                    <div class="bg-gray-200 text-gray-700 text-center py-2 rounded-lg font-medium hover:bg-gray-300 cursor-pointer">3</div>
+                    <div class="bg-gray-200 text-gray-700 text-center py-2 rounded-lg font-medium hover:bg-gray-300 cursor-pointer">4</div>
+                    <div class="bg-gray-200 text-gray-700 text-center py-2 rounded-lg font-medium hover:bg-gray-300 cursor-pointer">5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EvalEd</span>
+                    </div>
+                    <p class="text-gray-400">Raqamli baholash kompetensiyasini rivojlantirish tizimi. O'qituvchilar va ta'lim mutaxassislari uchun.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Bo'limlar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Darslar</a></li>
+                        <li><a href="exercises.html" class="text-gray-400 hover:text-white transition">Mashqlar</a></li>
+                        <li><a href="simulators.html" class="text-gray-400 hover:text-white transition">Simulyator</a></li>
+                        <li><a href="certificate.html" class="text-gray-400 hover:text-white transition">Sertifikat</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Platforma</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">Biz haqimizda</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Aloqa</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Maxfiylik siyosati</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition">Foydalanish shartlari</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Aloqa</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@evaled.uz</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+998 71 123 45 67</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Guliston, O'zbekiston</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 EvalEd. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = document.querySelectorAll('.quiz-option');
+            const nextButton = document.getElementById('nextButton');
+            const prevButton = document.getElementById('prevButton');
+            const explanation = document.getElementById('explanation');
+            
+            let selectedOption = null;
+            const correctAnswer = 'C'; // Correct answer for this question
+            
+            // Timer functionality
+            let timeLeft = 10 * 60; // 10 minutes in seconds
+            const timerElement = document.getElementById('timer');
+            
+            const timer = setInterval(function() {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert('Vaqt tugadi! Test avtomatik ravishda yakunlanadi.');
+                    // In a real app, this would submit the quiz
+                }
+            }, 1000);
+            
+            // Option selection
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    options.forEach(opt => {
+                        opt.classList.remove('selected', 'correct', 'incorrect');
+                        const circle = opt.querySelector('.option-circle');
+                        circle.innerHTML = `<span class="text-gray-700 font-medium">${opt.dataset.option}</span>`;
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    const circle = this.querySelector('.option-circle');
+                    circle.innerHTML = `<i class="fas fa-check text-white"></i>`;
+                    circle.classList.add('bg-indigo-600', 'border-indigo-600');
+                    
+                    selectedOption = this.dataset.option;
+                    
+                    // Show explanation after selection
+                    explanation.classList.remove('hidden');
+                    
+                    // Check if answer is correct (for demonstration)
+                    if (selectedOption === correctAnswer) {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                        // Also show correct answer
+                        options.forEach(opt => {
+                            if (opt.dataset.option === correctAnswer) {
+                                opt.classList.add('correct');
+                                const correctCircle = opt.querySelector('.option-circle');
+                                correctCircle.innerHTML = `<i class="fas fa-check text-white"></i>`;
+                                correctCircle.classList.add('bg-green-500', 'border-green-500');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Next button functionality
+            nextButton.addEventListener('click', function() {
+                if (!selectedOption) {
+                    alert('Iltimos, javob variantini tanlang!');
+                    return;
+                }
+                
+                // In a real app, this would go to the next question
+                alert('Keyingi savolga o\'tish. Haqiqiy ilovada bu yangi savolni yuklaydi.');
+            });
+            
+            // Previous button functionality
+            prevButton.addEventListener('click', function() {
+                // In a real app, this would go to the previous question
+                alert('Oldingi savolga qaytish. Haqiqiy ilovada bu oldingi savolni yuklaydi.');
+            });
+        });
+    </script>
+</body>
+</html>

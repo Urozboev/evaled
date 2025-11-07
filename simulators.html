@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baholash simulyatorlari - EvalEd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .simulator-progress {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">EvalEd</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-gray-600 hover:text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="admin-login.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                    <i class="fas fa-user mr-2"></i>Admin kirish
+                </a>
+                <button class="md:hidden text-gray-600" id="mobileMenuButton">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-4 px-4 shadow-md" id="mobileMenu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-gray-600 hover:text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-white py-8 shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">Baholash Simulyatorlari</h1>
+                    <p class="text-gray-600">Virtual o'quvchilar javoblarini baholash orqali amaliy ko'nikmalaringizni oshiring</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex space-x-3">
+                        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                            <option>Barcha fanlar</option>
+                            <option>Matematika</option>
+                            <option>Fizika</option>
+                            <option>Biologiya</option>
+                            <option>Tarix</option>
+                            <option>Adabiyot</option>
+                        </select>
+                        <div class="relative">
+                            <input type="text" placeholder="Simulyator qidirish..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-64">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulators Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Simulator 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center relative">
+                        <i class="fas fa-calculator text-indigo-600 text-5xl"></i>
+                        <div class="absolute top-4 right-4 bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Matematika</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Matematika Darsi - Formativ Baholash</h3>
+                        <p class="text-gray-600 mb-4">Kasrlar bilan amallar mavzusida 3 ta virtual o'quvchining javoblarini baholang.</p>
+                        
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <i class="far fa-clock mr-1"></i>
+                            <span>25 daqiqa</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-user-graduate mr-1"></i>
+                            <span>3 ta o'quvchi</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-500 mb-1">
+                                <span>Progress</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full simulator-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-star mr-1"></i>
+                                <span>Qiyinlik: O'rta</span>
+                            </div>
+                            <a href="simulator-detail.html?id=1" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Davom etish
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-green-100 flex items-center justify-center relative">
+                        <i class="fas fa-atom text-green-600 text-5xl"></i>
+                        <div class="absolute top-4 right-4 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Fizika</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Fizika Darsi - Tajriba Hisoboti</h3>
+                        <p class="text-gray-600 mb-4">Laboratoriya tajribasi hisobotlarini rubrika asosida baholang.</p>
+                        
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <i class="far fa-clock mr-1"></i>
+                            <span>30 daqiqa</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-user-graduate mr-1"></i>
+                            <span>4 ta o'quvchi</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-500 mb-1">
+                                <span>Progress</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full simulator-progress" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-star mr-1"></i>
+                                <span>Qiyinlik: O'rta</span>
+                            </div>
+                            <a href="simulator-detail.html?id=2" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Davom etish
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center relative">
+                        <i class="fas fa-book text-blue-600 text-5xl"></i>
+                        <div class="absolute top-4 right-4 bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Adabiyot</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Adabiyot Darsi - Insho Baholash</h3>
+                        <p class="text-gray-600 mb-4">"Vatan haqida" mavzusida yozilgan insholarni tahlil qiling va baholang.</p>
+                        
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <i class="far fa-clock mr-1"></i>
+                            <span>35 daqiqa</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-user-graduate mr-1"></i>
+                            <span>5 ta o'quvchi</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-500 mb-1">
+                                <span>Progress</span>
+                                <span>0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full simulator-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-star mr-1"></i>
+                                <span>Qiyinlik: Qiyin</span>
+                            </div>
+                            <a href="simulator-detail.html?id=3" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Boshlash
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center relative">
+                        <i class="fas fa-dna text-purple-600 text-5xl"></i>
+                        <div class="absolute top-4 right-4 bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Biologiya</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Biologiya Darsi - Diagramma Tahlili</h3>
+                        <p class="text-gray-600 mb-4">O'quvchilar tomonidan chizilgan biologik diagrammalarni baholang.</p>
+                        
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <i class="far fa-clock mr-1"></i>
+                            <span>20 daqiqa</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-user-graduate mr-1"></i>
+                            <span>3 ta o'quvchi</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-500 mb-1">
+                                <span>Progress</span>
+                                <span>0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full simulator-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-star mr-1"></i>
+                                <span>Qiyinlik: Oson</span>
+                            </div>
+                            <a href="simulator-detail.html?id=4" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Boshlash
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-yellow-100 flex items-center justify-center relative">
+                        <i class="fas fa-landmark text-yellow-600 text-5xl"></i>
+                        <div class="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Tarix</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Tarix Darsi - Chronologik Jadval</h3>
+                        <p class="text-gray-600 mb-4">Tarixiy hodisalarning chronologik jadvalini tuzish topshirig'ini baholang.</p>
+                        
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <i class="far fa-clock mr-1"></i>
+                            <span>25 daqiqa</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-user-graduate mr-1"></i>
+                            <span>4 ta o'quvchi</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-500 mb-1">
+                                <span>Progress</span>
+                                <span>0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-600 h-2 rounded-full simulator-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-star mr-1"></i>
+                                <span>Qiyinlik: O'rta</span>
+                            </div>
+                            <a href="simulator-detail.html?id=5" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Boshlash
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator 6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-red-100 flex items-center justify-center relative">
+                        <i class="fas fa-globe text-red-600 text-5xl"></i>
+                        <div class="absolute top-4 right-4 bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Geografiya</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Geografiya Darsi - Xarita Tahlili</h3>
+                        <p class="text-gray-600 mb-4">O'quvchilar tomonidan chizilgan geografik xaritalarni baholash.</p>
+                        
+                        <div class="flex items-center text-gray-500 text-sm mb-4">
+                            <i class="far fa-clock mr-1"></i>
+                            <span>30 daqiqa</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-user-graduate mr-1"></i>
+                            <span>3 ta o'quvchi</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-500 mb-1">
+                                <span>Progress</span>
+                                <span>0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-red-600 h-2 rounded-full simulator-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-star mr-1"></i>
+                                <span>Qiyinlik: Qiyin</span>
+                            </div>
+                            <a href="simulator-detail.html?id=6" class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Boshlash
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-12 flex justify-center">
+                <nav class="flex items-center space-x-2">
+                    <a href="#" class="px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#" class="px-3 py-2 text-white bg-indigo-600 border border-indigo-600 rounded-lg">1</a>
+                    <a href="#" class="px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">2</a>
+                    <a href="#" class="px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">3</a>
+                    <a href="#" class="px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Simulyator Qanday Ishlaydi?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-indigo-600 font-bold text-xl">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Simulyatorni Tanlang</h3>
+                        <p class="text-gray-600">O'zingizga mos fan va mavzudagi simulyatorni tanlang</p>
+                    </div>
+
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-green-600 font-bold text-xl">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Javoblarni Baholang</h3>
+                        <p class="text-gray-600">Virtual o'quvchilarning javoblarini rubrika asosida baholang</p>
+                    </div>
+
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-purple-600 font-bold text-xl">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Natijalarni Solishtiring</h3>
+                        <p class="text-gray-600">O'z bahoingizni mutaxassislar bahosi bilan solishtiring</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EvalEd</span>
+                    </div>
+                    <p class="text-gray-400">Raqamli baholash kompetensiyasini rivojlantirish tizimi. O'qituvchilar va ta'lim mutaxassislari uchun.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Bo'limlar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Darslar</a></li>
+                        <li><a href="exercises.html" class="text-gray-400 hover:text-white transition">Mashqlar</a></li>
+                        <li><a href="simulators.html" class="text-gray-400 hover:text-white transition">Simulyator</a></li>
+                        <li><a href="certificate.html" class="text-gray-400 hover:text-white transition">Sertifikat</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Platforma</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">Biz haqimizda</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Aloqa</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Maxfiylik siyosati</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition">Foydalanish shartlari</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Aloqa</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@evaled.uz</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+998 71 123 45 67</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Guliston, O'zbekiston</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 EvalEd. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Progress bar animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.simulator-progress');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

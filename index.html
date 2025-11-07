@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAQAMLI TA’LIMDA BO‘LAJAK BOSHLANG’ICH SINF O‘QITUVCHILARINI TA’LIM JARAYONINI BAHOLASH KOMPETENSIYALARINI
+        RIVOJLANTIRISH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-white text-lg"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-800">EvalEd</span>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-gray-600 hover:text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-gray-600 hover:text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="admin-login.html"
+                    class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                    <i class="fas fa-user mr-2"></i>Admin kirish
+                </a>
+                <button class="md:hidden text-gray-600" id="mobileMenuButton">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-4 px-4 shadow-md" id="mobileMenu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-gray-600 hover:text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-gray-600 hover:text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-transform-uppercase">
+                RAQAMLI TA’LIMDA BO‘LAJAK BOSHLANG’ICH SINF O‘QITUVCHILARINI TA’LIM JARAYONINI BAHOLASH
+                KOMPETENSIYALARINI RIVOJLANTIRISH
+            </h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">EvalEd platformasi orqali formativ baholash, rubrikalar yaratish
+                va o'quvchilarning bilimini baholash ko'nikmalarini o'zlashtiring.</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <a href="lessons.html"
+                    class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Darslarni
+                    boshlash</a>
+                <a href="about.html"
+                    class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">Loyiha
+                    haqida</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="bg-white py-8 shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-xl font-bold text-gray-800">Sizning progressingiz</h2>
+                    <p class="text-gray-600">Darslarni tugatib, sertifikat oling</p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-sm font-medium text-gray-700">Umumiy progress</span>
+                        <span class="text-sm font-medium text-gray-700">25%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-indigo-600 h-2.5 rounded-full progress-bar" style="width: 25%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Preview Section -->
+    <section id="lessons" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Nazariy darslar</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Raqamli baholashning turli jihatlari haqida bilim oling. Har
+                    bir dars video, PDF material va testlarni o'z ichiga oladi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lesson 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-indigo-600 text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Formativ baholash tushunchasi</h3>
+                            <span
+                                class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Yangi</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Formativ baholash nima va qanday qilib o'quv jarayonini yaxshilash
+                            uchun foydalanish mumkin.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-clock mr-1"></i>
+                                <span>15 daqiqa</span>
+                            </div>
+                            <a href="lesson-detail.html?id=1"
+                                class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Darsni ko'rish
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-table text-blue-600 text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Rubrikalar yaratish</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Davom
+                                etmoqda</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Samarali baholash rubrikalari qanday yaratiladi va ularni qanday
+                            qo'llash kerak.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-clock mr-1"></i>
+                                <span>20 daqiqa</span>
+                            </div>
+                            <a href="lesson-detail.html?id=2"
+                                class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Darsni ko'rish
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-comments text-purple-600 text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Teskari aloqa berish</h3>
+                            <span
+                                class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Kutilmoqda</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">O'quvchilarga samarali teskari aloqa qanday beriladi va ularning
+                            rivojlanishiga qanday ta'sir qiladi.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-clock mr-1"></i>
+                                <span>25 daqiqa</span>
+                            </div>
+                            <a href="lesson-detail.html?id=3"
+                                class="text-indigo-600 font-medium hover:text-indigo-800 flex items-center">
+                                Darsni ko'rish
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="lessons.html"
+                    class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800">
+                    Barcha darslarni ko'rish
+                    <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Platforma imkoniyatlari</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">EvalEd platformasi orqali raqamli baholashning barcha
+                    jihatlarini o'rganing</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book-open text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Nazariy bilimlar</h3>
+                    <p class="text-gray-600">Baholashning nazariy asoslari, turlari va usullari haqida batafsil
+                        ma'lumotlar</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tasks text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Amaliy mashqlar</h3>
+                    <p class="text-gray-600">Rubrikalar to'ldirish, teskari aloqa berish kabi amaliy topshiriqlar</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop-code text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Baholash simulyatori</h3>
+                    <p class="text-gray-600">Virtual o'quvchilar javoblarini baholash orqali amaliy ko'nikmalar
+                        orttirish</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-indigo-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Sertifikat olishni boshlang</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Kursni tamomlang va raqamli baholash mutaxassisi sertifikatiga ega
+                bo'ling</p>
+            <a href="lessons.html"
+                class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-flex items-center">
+                Hoziroq boshlash
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EvalEd</span>
+                    </div>
+                    <p class="text-gray-400">Raqamli baholash kompetensiyasini rivojlantirish tizimi. O'qituvchilar va
+                        ta'lim mutaxassislari uchun.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Bo'limlar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Darslar</a></li>
+                        <li><a href="exercises.html" class="text-gray-400 hover:text-white transition">Mashqlar</a></li>
+                        <li><a href="simulators.html" class="text-gray-400 hover:text-white transition">Simulyator</a>
+                        </li>
+                        <li><a href="certificate.html" class="text-gray-400 hover:text-white transition">Sertifikat</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Platforma</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">Biz haqimizda</a>
+                        </li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Aloqa</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Maxfiylik
+                                siyosati</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition">Foydalanish
+                                shartlari</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Aloqa</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@evaled.uz</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+998 71 123 45 67</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Guliston, O'zbekiston</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 EvalEd. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function () {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function () {
+            // Progress bar animation
+            setTimeout(() => {
+                document.querySelector('.progress-bar').style.width = '25%';
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>

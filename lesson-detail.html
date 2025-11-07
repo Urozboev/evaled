@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formativ baholash tushunchasi - EvalEd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .lesson-nav {
+            position: sticky;
+            top: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">EvalEd</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-gray-600 hover:text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="admin-login.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+                    <i class="fas fa-user mr-2"></i>Admin kirish
+                </a>
+                <button class="md:hidden text-gray-600" id="mobileMenuButton">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-4 px-4 shadow-md" id="mobileMenu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium">Bosh sahifa</a>
+                <a href="lessons.html" class="text-indigo-600 font-medium">Darslar</a>
+                <a href="exercises.html" class="text-gray-600 hover:text-indigo-600 font-medium">Mashqlar</a>
+                <a href="simulators.html" class="text-gray-600 hover:text-indigo-600 font-medium">Simulyator</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 font-medium">Biz haqimizda</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Lesson Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Main Content -->
+            <div class="lg:w-3/4">
+                <!-- Breadcrumb -->
+                <nav class="flex mb-6" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="index.html" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600">
+                                <i class="fas fa-home mr-2"></i>
+                                Bosh sahifa
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                                <a href="lessons.html" class="ml-1 text-sm font-medium text-gray-700 hover:text-indigo-600 md:ml-2">Darslar</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Formativ Baholash Tushunchasi</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+
+                <!-- Lesson Header -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <div>
+                            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Formativ Baholash Tushunchasi</h1>
+                            <div class="flex items-center text-gray-600">
+                                <i class="far fa-clock mr-2"></i>
+                                <span>15 daqiqa</span>
+                                <span class="mx-2">•</span>
+                                <i class="far fa-calendar mr-2"></i>
+                                <span>12.10.2023</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Yangi</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center mb-6">
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 40%"></div>
+                        </div>
+                        <span class="ml-4 text-sm font-medium text-gray-700">40%</span>
+                    </div>
+
+                    <p class="text-gray-700 mb-6">Formativ baholash - bu o'quvchilarning o'rganish jarayonida ularning bilim darajasi, tushunish darajasi va qobiliyatlarini aniqlash, shuningdek, o'qitish va o'rganishni yaxshilash maqsadida ma'lumot to'plash, talqin qilish va ulardan foydalanish jarayonidir.</p>
+
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Baholash</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Formativ</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">O'qitish</span>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Rivojlanish</span>
+                    </div>
+                </div>
+
+                <!-- Video Section -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Video Dars</h2>
+                    <div class="video-container bg-black rounded-lg mb-4">
+                        <!-- Video placeholder - in real app, this would be an actual video -->
+                        <div class="w-full h-full flex items-center justify-center text-white">
+                            <div class="text-center">
+                                <i class="fas fa-play-circle text-5xl mb-2"></i>
+                                <p>Video dars yuklanmoqda...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-gray-600">
+                            <i class="far fa-eye mr-1"></i> 1,234 marta ko'rilgan
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center">
+                                <i class="fas fa-check mr-2"></i> Tugallandi deb belgilash
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Dars Mazmuni</h2>
+                    
+                    <div class="prose max-w-none">
+                        <h3>Formativ Baholash Nima?</h3>
+                        <p>Formativ baholash - bu o'quv jarayoni davomida o'quvchilarning bilim darajasi, tushunish darajasi va qobiliyatlarini aniqlash, shuningdek, o'qitish va o'rganishni yaxshilash maqsadida ma'lumot to'plash, talqin qilish va ulardan foydalanish jarayonidir.</p>
+                        
+                        <h3>Formativ Baholashning Maqsadlari</h3>
+                        <ul>
+                            <li>O'quvchilarning joriy bilim darajasini aniqlash</li>
+                            <li>O'qitish samaradorligini baholash</li>
+                            <li>O'quvchilarga teskari aloqa berish</li>
+                            <li>O'qitish usullarini takomillashtirish</li>
+                            <li>O'quvchilarning o'z o'rganish jarayonini boshqarishiga yordam berish</li>
+                        </ul>
+                        
+                        <h3>Formativ Baholash Usullari</h3>
+                        <p>Formativ baholash turli usullar orqali amalga oshirilishi mumkin:</p>
+                        <ol>
+                            <li>Kuzatuv</li>
+                            <li>Suhbat</li>
+                            <li>Savol-javob</li>
+                            <li>Kichik testlar</li>
+                            <li>O'z-o'zini baholash</li>
+                            <li>Guruh baholash</li>
+                        </ol>
+                        
+                        <h3>Formativ Baholashning Afzalliklari</h3>
+                        <p>Formativ baholashning quyidagi afzalliklari mavjud:</p>
+                        <ul>
+                            <li>O'quvchilarning zaif tomonlarini vaqtida aniqlash</li>
+                            <li>O'qituvchiga o'qitish usullarini takomillashtirish imkoniyatini berish</li>
+                            <li>O'quvchilarning o'rganish jarayonida faol ishtirok etishini ta'minlash</li>
+                            <li>O'quvchilarning o'z bilimlarini mustahkamlashiga yordam berish</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PDF Materials -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Qo'shimcha Materiallar</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="border border-gray-200 rounded-lg p-4 flex items-center">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-pdf text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Formativ Baholash Qo'llanmasi</h3>
+                                <p class="text-sm text-gray-600">PDF • 2.4 MB</p>
+                            </div>
+                            <button class="ml-auto text-indigo-600 hover:text-indigo-800">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="border border-gray-200 rounded-lg p-4 flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-powerpoint text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Formativ Baholash Prezentatsiyasi</h3>
+                                <p class="text-sm text-gray-600">PPTX • 5.1 MB</p>
+                            </div>
+                            <button class="ml-auto text-indigo-600 hover:text-indigo-800">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between">
+                    <a href="#" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Oldingi dars
+                    </a>
+                    <a href="quiz.html?lesson=1" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center">
+                        Testni boshlash <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:w-1/4">
+                <div class="lesson-nav bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Darslar Ro'yxati</h3>
+                    
+                    <div class="space-y-3">
+                        <a href="lesson-detail.html?id=1" class="flex items-center p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
+                            <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white text-sm font-medium">1</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Formativ Baholash Tushunchasi</h4>
+                                <div class="flex items-center text-xs text-gray-600">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>15 daqiqa</span>
+                                    <span class="mx-1">•</span>
+                                    <span class="text-green-600">40%</span>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="lesson-detail.html?id=2" class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-gray-700 text-sm font-medium">2</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Rubrikalar Yaratish</h4>
+                                <div class="flex items-center text-xs text-gray-600">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>20 daqiqa</span>
+                                    <span class="mx-1">•</span>
+                                    <span class="text-yellow-600">20%</span>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="lesson-detail.html?id=3" class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-gray-700 text-sm font-medium">3</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Teskari Aloqa Berish</h4>
+                                <div class="flex items-center text-xs text-gray-600">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>25 daqiqa</span>
+                                    <span class="mx-1">•</span>
+                                    <span class="text-gray-600">0%</span>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="lesson-detail.html?id=4" class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                            <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-gray-700 text-sm font-medium">4</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Summativ Baholash</h4>
+                                <div class="flex items-center text-xs text-gray-600">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>30 daqiqa</span>
+                                    <span class="mx-1">•</span>
+                                    <span class="text-gray-600">0%</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <a href="quiz.html?lesson=1" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition flex items-center justify-center">
+                            <i class="fas fa-play-circle mr-2"></i> Testni boshlash
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EvalEd</span>
+                    </div>
+                    <p class="text-gray-400">Raqamli baholash kompetensiyasini rivojlantirish tizimi. O'qituvchilar va ta'lim mutaxassislari uchun.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Bo'limlar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Darslar</a></li>
+                        <li><a href="exercises.html" class="text-gray-400 hover:text-white transition">Mashqlar</a></li>
+                        <li><a href="simulators.html" class="text-gray-400 hover:text-white transition">Simulyator</a></li>
+                        <li><a href="certificate.html" class="text-gray-400 hover:text-white transition">Sertifikat</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Platforma</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">Biz haqimizda</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Aloqa</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Maxfiylik siyosati</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition">Foydalanish shartlari</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Aloqa</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@evaled.uz</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+998 71 123 45 67</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Guliston, O'zbekiston</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 EvalEd. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
