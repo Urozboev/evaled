@@ -70,9 +70,14 @@ input, select, textarea { font: inherit; color: inherit; }
 .brand-text small { display: block; color: var(--muted); font-weight: 600; font-size: 10.5px; }
 .nav-band {
     flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 6px;
-    background: linear-gradient(100deg, var(--navy) 0%, var(--primary-dark) 45%, var(--primary) 100%);
-    clip-path: polygon(28px 0, 100% 0, 100% 100%, 0 100%);
     padding: 0 var(--gut) 0 48px;
+    position: relative; z-index: 0; --cut: 28px;
+}
+/* Qiya fon alohida qatlamda — dropdown’lar kesilib qolmasligi uchun */
+.nav-band::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(100deg, var(--navy) 0%, var(--primary-dark) 45%, var(--primary) 100%);
+    clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%);
 }
 .main-nav { display: flex; align-items: center; gap: 2px; margin-right: auto; }
 .main-nav a {
@@ -456,7 +461,7 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
 @media (max-width: 1100px) {
     .main-nav { display: none; }
     .menu-toggle { display: grid; }
-    .nav-band { clip-path: polygon(22px 0, 100% 0, 100% 100%, 0 100%); padding-left: 40px; }
+    .nav-band { --cut: 22px; padding-left: 40px; }
     .brand-text { display: block; }
 }
 @media (max-width: 1024px) {
