@@ -1,0 +1,36 @@
+{
+  "name": "raqamli-baholash",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "db:seed": "tsx src/db/seed.ts",
+    "db:setup": "npm run db:migrate && npm run db:seed"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "6.7.2",
+    "@neondatabase/serverless": "1.1.0",
+    "bcryptjs": "3.0.3",
+    "drizzle-orm": "0.45.3",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.3.7",
+    "@types/node": "22.15.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.3",
+    "dotenv": "16.5.0",
+    "drizzle-kit": "0.31.11",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}
